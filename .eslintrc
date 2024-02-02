@@ -38,6 +38,14 @@
                 "ts": "never"
             }
         ],
-        "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+        "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+        "import/no-extraneous-dependencies": [
+          "warn",
+          {
+              "devDependencies": true,
+              "optionalDependencies": true,
+              "peerDependencies": true
+          }
+      ]
     }
 }

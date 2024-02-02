@@ -8,7 +8,7 @@ export const createCard = (req: any, res: Response, next: NextFunction) => {
   const { name, link } = req.body;
 
   return Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.status(201).send({ data: card }))
     .catch(next);
 };
 

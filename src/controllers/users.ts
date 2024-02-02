@@ -7,9 +7,7 @@ const ValidationError = require('../errors/ValidationError');
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
   const { name, about, avatar } = req.body;
   return User.create({ name, about, avatar })
-    .then((user) => {
-      res.send({ data: user });
-    })
+    .then((user) => res.status(201).send({ data: user }))
     .catch(next);
 };
 
@@ -30,7 +28,7 @@ export const getUser = (req: Request, res: Response, next: NextFunction) => User
 export const updateUser = (req: any, res: Response, next: NextFunction) => {
   const { name, about } = req.body;
 
-  return User.findByIdAndUpdate(req.user._id, { name, about }, { new: true })
+  return User.findByIdAndUpdate(req.user._id, { name, about }, { new: true, runValidators: true })
     .then((user) => {
       if (!user) {
         throw new NotFoundError('The requested user was not found');
@@ -48,7 +46,7 @@ export const updateUser = (req: any, res: Response, next: NextFunction) => {
 export const updateUserAvatar = (req: any, res: Response, next: NextFunction) => {
   const { avatar } = req.body;
 
-  return User.findByIdAndUpdate(req.user._id, { avatar }, { new: true })
+  return User.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
     .then((user) => {
       if (!user) {
         throw new NotFoundError('The requested user was not found');

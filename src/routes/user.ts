@@ -12,9 +12,9 @@ const router = Router();
 router.get('/', getUsers);
 router.post('/', createUser);
 
-router.get('/:userId', getUser);
-
 router.patch('/me', updateUser);
 router.patch('/me/avatar', updateUserAvatar);
+
+router.get('/:userId', getUser);
 
 export default router;
