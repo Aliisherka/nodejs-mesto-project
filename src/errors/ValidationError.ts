@@ -1,5 +1,5 @@
-const MyEr = require('./MyError');
+const ValidationErrorMyError = require('./MyError');
 
-class ValidationError extends MyEr {}
+class ValidationError extends ValidationErrorMyError {}
 
 module.exports = ValidationError;

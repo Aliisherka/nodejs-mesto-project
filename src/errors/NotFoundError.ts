@@ -1,5 +1,5 @@
-const MyErr = require('./MyError');
+const NotFoundMyError = require('./MyError');
 
-class NotFoundError extends MyErr {}
+class NotFoundError extends NotFoundMyError {}
 
 module.exports = NotFoundError;

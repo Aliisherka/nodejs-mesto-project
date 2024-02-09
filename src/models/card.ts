@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import validator from 'validator';
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -11,7 +10,7 @@ const cardSchema = new mongoose.Schema({
   link: {
     type: String,
     validate: {
-      validator: (v: string) => validator.isURL(v),
+      validator: (v: string) => /^(https?:\/\/)(w{3}.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]*)?(#)?$/.test(v),
       message: 'Incorrect URL',
     },
     required: [true, 'The "link" field must be filled in'],
