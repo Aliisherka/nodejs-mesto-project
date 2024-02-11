@@ -17,7 +17,9 @@ export const login = (req: Request, res: Response, next: NextFunction) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-      }).end();
+      }).send({
+        message: true,
+      });
     })
     .catch(next);
 };
